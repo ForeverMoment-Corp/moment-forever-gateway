@@ -1,0 +1,230 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    consul:
+      host: ${CONSUL_HOST:localhost}
+      port: 8500
+      discovery:
+        enabled: true
+        register: true
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}:${random.value}
+        prefer-ip-address: true
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        deregister-after: 1m
+        query-passing: true
+      config:
+        enabled: false  # Disable Consul Config
+
+    loadbalancer:
+      cache:
+        ttl: 5s
+
+    gateway:
+      routes:
+
+        # ===============================
+        # PUBLIC ROUTES
+        # ===============================
+
+        - id: platform-public
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/platform/public/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        - id: platform-auth
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/platform/auth/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        - id: platform-uploads
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/uploads/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        # Swagger API Docs
+        - id: platform-api-docs
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/platform/v3/api-docs/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        - id: booking-api-docs
+          uri: lb://MOMENT-FOREVER-BOOKING
+          predicates:
+            - Path=/api/booking/v3/api-docs/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        - id: payment-api-docs
+          uri: lb://MOMENT-FOREVER-PAYMENT
+          predicates:
+            - Path=/api/payment/v3/api-docs/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        # Health Checks (public, no auth)
+        - id: platform-actuator-health
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/platform/actuator/health
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        - id: booking-actuator-health
+          uri: lb://MOMENT-FOREVER-BOOKING
+          predicates:
+            - Path=/api/booking/actuator/health
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        - id: payment-actuator-health
+          uri: lb://MOMENT-FOREVER-PAYMENT
+          predicates:
+            - Path=/api/payment/actuator/health
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
+        # ===============================
+        # PROTECTED ROUTES
+        # ===============================
+
+        - id: platform-admin
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/platform/admin/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            requires-auth: true
+
+        - id: platform-user
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/platform/user/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            requires-auth: true
+
+        - id: platform-other
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/platform/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            requires-auth: true
+
+        - id: booking-service
+          uri: lb://MOMENT-FOREVER-BOOKING
+          predicates:
+            - Path=/api/booking/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            requires-auth: true
+
+        - id: payment-service
+          uri: lb://MOMENT-FOREVER-PAYMENT
+          predicates:
+            - Path=/api/payment/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            requires-auth: true
+
+        - id: platform-actuator
+          uri: lb://MOMENT-FOREVER-PLATFORM
+          predicates:
+            - Path=/api/platform/actuator/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            requires-auth: true
+
+        - id: booking-actuator
+          uri: lb://MOMENT-FOREVER-BOOKING
+          predicates:
+            - Path=/api/booking/actuator/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            requires-auth: true
+
+        - id: payment-actuator
+          uri: lb://MOMENT-FOREVER-PAYMENT
+          predicates:
+            - Path=/api/payment/actuator/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            requires-auth: true
+
+
+# ===============================
+# JWT CONFIG
+# ===============================
+
+jwt:
+  secret: "your-256-bit-secret-key-must-be-at-least-32-characters-long-here"
+  expiration: 86400000
+
+
+# ===============================
+# MANAGEMENT / ACTUATOR
+# ===============================
+
+# ===============================
+# LOGGING
+# ===============================
+
+#moved to logback.xml file
+
+
+# ===============================
+# SWAGGER AGGREGATION (GATEWAY)
+# ===============================
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    persist-authorization: true
+    urls:
+      - name: Platform Service
+        url: /api/platform/v3/api-docs
+      - name: Booking Service
+        url: /api/booking/v3/api-docs
+      - name: Payment Service
+        url: /api/payment/v3/api-docs
