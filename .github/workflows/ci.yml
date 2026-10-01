@@ -20,7 +20,7 @@ jobs:
   run-shared-ci:
     # This points to the reusable workflow maintained in the platform repository.
     # If your GitHub owner or repo name differs, update this single line.
-    uses: groote123/forever-moment-platform-master/.github/workflows/reusable-ci.yml@main
+    uses: ForeverMoment-Corp/moment-forever-platform/.github/workflows/reusable-ci.yml@main
     with:
       service_name: gateway
       dockerhub_repository: groote123/moment-forever-gateway
