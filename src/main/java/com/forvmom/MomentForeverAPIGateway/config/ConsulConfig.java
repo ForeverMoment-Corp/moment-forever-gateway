@@ -10,6 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @EnableDiscoveryClient
 public class ConsulConfig {
 
+    //test commit
     @Bean
     @LoadBalanced
     public WebClient.Builder loadBalancedWebClientBuilder() {
