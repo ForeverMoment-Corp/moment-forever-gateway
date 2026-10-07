@@ -12,14 +12,13 @@ on:
       - main
 
 concurrency:
-  # Cancel older runs for the same branch to avoid duplicated work.
+  # Cancel older runs for the same branch so latest commit gets priority.
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   run-shared-ci:
     # This points to the reusable workflow maintained in the platform repository.
-    # If your GitHub owner or repo name differs, update this single line.
     uses: ForeverMoment-Corp/moment-forever-platform/.github/workflows/reusable-ci.yml@main
     with:
       service_name: gateway
