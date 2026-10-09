@@ -1,0 +1,302 @@
+2026-10-09 13:42:49.577 [boundedElastic-69] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-BOOKING
+2026-10-09 17:25:04.867 [background-preinit] [34mINFO [0;39m [36mo.h.validator.internal.util.Version[0;39m - HV000001: Hibernate Validator 8.0.1.Final
+2026-10-09 17:25:04.900 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Starting MomentForeverApiGatewayApplication using Java 17.0.12 with PID 23188 (C:\manishshrma\moment-forever-gateway\target\classes started by rsshr in C:\manishshrma\moment-forever-gateway)
+2026-10-09 17:25:04.900 [main] [39mDEBUG[0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-10-09 17:25:04.900 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2026-10-09 17:25:06.010 [main] [34mINFO [0;39m [36mo.s.cloud.context.scope.GenericScope[0;39m - BeanFactory id=271ce793-fd9a-3242-b60d-e21ea8bc6c69
+2026-10-09 17:25:06.065 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 17:25:06.065 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 17:25:06.065 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 17:25:10.694 [main] [34mINFO [0;39m [36mo.s.b.a.e.web.EndpointLinksResolver[0;39m - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-10-09 17:25:11.470 [main] [31mWARN [0;39m [36mo.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger[0;39m - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-09 17:25:11.766 [catalogWatchTaskScheduler-1] [1;31mERROR[0;39m [36mo.s.c.c.discovery.ConsulCatalogWatch[0;39m - Error watching Consul CatalogServices
+com.ecwid.consul.transport.TransportException: org.apache.http.conn.HttpHostConnectException: Connect to localhost:8500 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+	at com.ecwid.consul.transport.AbstractHttpTransport.executeRequest(AbstractHttpTransport.java:83)
+	at com.ecwid.consul.transport.AbstractHttpTransport.makeGetRequest(AbstractHttpTransport.java:36)
+	at com.ecwid.consul.v1.ConsulRawClient.makeGetRequest(ConsulRawClient.java:139)
+	at com.ecwid.consul.v1.catalog.CatalogConsulClient.getCatalogServices(CatalogConsulClient.java:143)
+	at com.ecwid.consul.v1.ConsulClient.getCatalogServices(ConsulClient.java:400)
+	at org.springframework.cloud.consul.discovery.ConsulCatalogWatch.catalogServicesWatch(ConsulCatalogWatch.java:130)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:305)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to localhost:8500 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:221)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:165)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:140)
+	at com.ecwid.consul.transport.AbstractHttpTransport.executeRequest(AbstractHttpTransport.java:70)
+	... 13 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
+	... 25 common frames omitted
+2026-10-09 17:25:12.049 [main] [34mINFO [0;39m [36mo.s.b.w.e.netty.NettyWebServer[0;39m - Netty started on port 8086
+2026-10-09 17:25:12.056 [main] [34mINFO [0;39m [36mo.s.c.c.s.ConsulServiceRegistry[0;39m - Registering service with consul: NewService{id='api-gateway-cb57bfb8b8b7223fa472ce02b07e1fdf', name='api-gateway', tags=[], address='192.168.1.101', meta={secure=false}, port=8086, enableTagOverride=null, check=Check{script='null', dockerContainerID='null', shell='null', interval='10s', ttl='null', http='http://192.168.1.101:8086/actuator/health', method='null', header={}, tcp='null', timeout='null', deregisterCriticalServiceAfter='null', tlsSkipVerify=null, status='null', grpc='null', grpcUseTLS=null}, checks=null}
+2026-10-09 17:25:12.139 [main] [1;31mERROR[0;39m [36mo.s.c.c.s.ConsulServiceRegistry[0;39m - Error registering service with consul: NewService{id='api-gateway-cb57bfb8b8b7223fa472ce02b07e1fdf', name='api-gateway', tags=[], address='192.168.1.101', meta={secure=false}, port=8086, enableTagOverride=null, check=Check{script='null', dockerContainerID='null', shell='null', interval='10s', ttl='null', http='http://192.168.1.101:8086/actuator/health', method='null', header={}, tcp='null', timeout='null', deregisterCriticalServiceAfter='null', tlsSkipVerify=null, status='null', grpc='null', grpcUseTLS=null}, checks=null}
+com.ecwid.consul.transport.TransportException: org.apache.http.conn.HttpHostConnectException: Connect to localhost:8500 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+	at com.ecwid.consul.transport.AbstractHttpTransport.executeRequest(AbstractHttpTransport.java:83)
+	at com.ecwid.consul.transport.AbstractHttpTransport.makePutRequest(AbstractHttpTransport.java:49)
+	at com.ecwid.consul.v1.ConsulRawClient.makePutRequest(ConsulRawClient.java:163)
+	at com.ecwid.consul.v1.agent.AgentConsulClient.agentServiceRegister(AgentConsulClient.java:273)
+	at com.ecwid.consul.v1.ConsulClient.agentServiceRegister(ConsulClient.java:310)
+	at org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.register(ConsulServiceRegistry.java:67)
+	at org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.register(ConsulServiceRegistry.java:43)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:264)
+	at org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistration.register(ConsulAutoServiceRegistration.java:80)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:156)
+	at org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistration.start(ConsulAutoServiceRegistration.java:70)
+	at org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistrationListener.onApplicationEvent(ConsulAutoServiceRegistrationListener.java:60)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:174)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:445)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+	at org.springframework.boot.web.reactive.context.WebServerManager.start(WebServerManager.java:57)
+	at org.springframework.boot.web.reactive.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:41)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:179)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:357)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:156)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:124)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:966)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.forvmom.MomentForeverAPIGateway.MomentForeverApiGatewayApplication.main(MomentForeverApiGatewayApplication.java:12)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to localhost:8500 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:221)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:165)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:140)
+	at com.ecwid.consul.transport.AbstractHttpTransport.executeRequest(AbstractHttpTransport.java:70)
+	... 32 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
+	... 44 common frames omitted
+2026-10-09 17:25:12.142 [main] [31mWARN [0;39m [36mo.s.b.w.r.c.AnnotationConfigReactiveWebServerApplicationContext[0;39m - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-10-09 17:25:14.281 [main] [34mINFO [0;39m [36mo.s.b.a.l.ConditionEvaluationReportLogger[0;39m - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-10-09 17:25:14.327 [main] [1;31mERROR[0;39m [36mo.s.boot.SpringApplication[0;39m - Application run failed
+org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:182)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:357)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:156)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:124)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:966)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:619)
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:738)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:440)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at com.forvmom.MomentForeverAPIGateway.MomentForeverApiGatewayApplication.main(MomentForeverApiGatewayApplication.java:12)
+Caused by: com.ecwid.consul.transport.TransportException: org.apache.http.conn.HttpHostConnectException: Connect to localhost:8500 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+	at com.ecwid.consul.transport.AbstractHttpTransport.executeRequest(AbstractHttpTransport.java:83)
+	at com.ecwid.consul.transport.AbstractHttpTransport.makePutRequest(AbstractHttpTransport.java:49)
+	at com.ecwid.consul.v1.ConsulRawClient.makePutRequest(ConsulRawClient.java:163)
+	at com.ecwid.consul.v1.agent.AgentConsulClient.agentServiceRegister(AgentConsulClient.java:273)
+	at com.ecwid.consul.v1.ConsulClient.agentServiceRegister(ConsulClient.java:310)
+	at org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.register(ConsulServiceRegistry.java:67)
+	at org.springframework.cloud.consul.serviceregistry.ConsulServiceRegistry.register(ConsulServiceRegistry.java:43)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.register(AbstractAutoServiceRegistration.java:264)
+	at org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistration.register(ConsulAutoServiceRegistration.java:80)
+	at org.springframework.cloud.client.serviceregistry.AbstractAutoServiceRegistration.start(AbstractAutoServiceRegistration.java:156)
+	at org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistration.start(ConsulAutoServiceRegistration.java:70)
+	at org.springframework.cloud.consul.serviceregistry.ConsulAutoServiceRegistrationListener.onApplicationEvent(ConsulAutoServiceRegistrationListener.java:60)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:174)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:445)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+	at org.springframework.boot.web.reactive.context.WebServerManager.start(WebServerManager.java:57)
+	at org.springframework.boot.web.reactive.context.WebServerStartStopLifecycle.start(WebServerStartStopLifecycle.java:41)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:179)
+	... 13 common frames omitted
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to localhost:8500 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: no further information
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:72)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:221)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:165)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:140)
+	at com.ecwid.consul.transport.AbstractHttpTransport.executeRequest(AbstractHttpTransport.java:70)
+	... 32 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
+	... 44 common frames omitted
+2026-10-09 17:59:55.722 [background-preinit] [34mINFO [0;39m [36mo.h.validator.internal.util.Version[0;39m - HV000001: Hibernate Validator 8.0.1.Final
+2026-10-09 17:59:55.778 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Starting MomentForeverApiGatewayApplication using Java 17.0.12 with PID 2352 (C:\manishshrma\moment-forever-gateway\target\classes started by rsshr in C:\manishshrma\moment-forever-gateway)
+2026-10-09 17:59:55.779 [main] [39mDEBUG[0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-10-09 17:59:55.780 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2026-10-09 17:59:57.073 [main] [34mINFO [0;39m [36mo.s.cloud.context.scope.GenericScope[0;39m - BeanFactory id=271ce793-fd9a-3242-b60d-e21ea8bc6c69
+2026-10-09 17:59:57.161 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 17:59:57.163 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 17:59:57.164 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 17:59:58.705 [main] [34mINFO [0;39m [36mo.s.b.a.e.web.EndpointLinksResolver[0;39m - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-10-09 17:59:58.965 [main] [31mWARN [0;39m [36mo.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger[0;39m - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-09 17:59:59.168 [main] [34mINFO [0;39m [36mo.s.b.w.e.netty.NettyWebServer[0;39m - Netty started on port 8086
+2026-10-09 17:59:59.170 [main] [34mINFO [0;39m [36mo.s.c.c.s.ConsulServiceRegistry[0;39m - Registering service with consul: NewService{id='api-gateway-3026c9d0e81bfd8a62b1a971921a455e', name='api-gateway', tags=[], address='192.168.1.101', meta={secure=false}, port=8086, enableTagOverride=null, check=Check{script='null', dockerContainerID='null', shell='null', interval='10s', ttl='null', http='http://192.168.1.101:8086/actuator/health', method='null', header={}, tcp='null', timeout='null', deregisterCriticalServiceAfter='null', tlsSkipVerify=null, status='null', grpc='null', grpcUseTLS=null}, checks=null}
+2026-10-09 17:59:59.578 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Started MomentForeverApiGatewayApplication in 4.38 seconds (process running for 5.588)
+2026-10-09 19:20:22.934 [boundedElastic-31] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:22.935 [boundedElastic-27] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:23.203 [boundedElastic-27] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:23.206 [boundedElastic-31] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:23.221 [boundedElastic-31] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:23.245 [boundedElastic-31] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:27.810 [boundedElastic-28] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:27.810 [boundedElastic-37] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:27.848 [boundedElastic-28] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:27.848 [boundedElastic-37] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:27.892 [boundedElastic-28] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:20:27.919 [boundedElastic-28] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-PLATFORM
+2026-10-09 19:36:49.976 [boundedElastic-28] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-BOOKING
+2026-10-09 19:37:46.767 [reactor-http-nio-11] [39mDEBUG[0;39m [36mc.f.M.util.JwtUtil[0;39m - Token expired: JWT expired at 2026-10-06T12:22:40Z. Current time: 2026-10-09T14:07:46Z, a difference of 265506748 milliseconds.  Allowed clock skew: 0 milliseconds.
+2026-10-09 19:38:12.189 [reactor-http-nio-7] [39mDEBUG[0;39m [36mc.f.M.util.JwtUtil[0;39m - Token expired: JWT expired at 2026-10-09T14:05:21Z. Current time: 2026-10-09T14:08:12Z, a difference of 171189 milliseconds.  Allowed clock skew: 0 milliseconds.
+2026-10-09 19:38:12.203 [reactor-http-nio-8] [39mDEBUG[0;39m [36mc.f.M.util.JwtUtil[0;39m - Token expired: JWT expired at 2026-10-09T14:05:21Z. Current time: 2026-10-09T14:08:12Z, a difference of 171203 milliseconds.  Allowed clock skew: 0 milliseconds.
+2026-10-09 19:38:12.203 [reactor-http-nio-9] [39mDEBUG[0;39m [36mc.f.M.util.JwtUtil[0;39m - Token expired: JWT expired at 2026-10-09T14:05:21Z. Current time: 2026-10-09T14:08:12Z, a difference of 171203 milliseconds.  Allowed clock skew: 0 milliseconds.
+2026-10-09 19:38:12.203 [reactor-http-nio-10] [39mDEBUG[0;39m [36mc.f.M.util.JwtUtil[0;39m - Token expired: JWT expired at 2026-10-09T14:05:21Z. Current time: 2026-10-09T14:08:12Z, a difference of 171203 milliseconds.  Allowed clock skew: 0 milliseconds.
+2026-10-09 20:46:10.651 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.c.c.s.ConsulServiceRegistry[0;39m - Deregistering service with consul: api-gateway-3026c9d0e81bfd8a62b1a971921a455e
+2026-10-09 20:46:35.159 [background-preinit] [34mINFO [0;39m [36mo.h.validator.internal.util.Version[0;39m - HV000001: Hibernate Validator 8.0.1.Final
+2026-10-09 20:46:35.458 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Starting MomentForeverApiGatewayApplication using Java 17.0.12 with PID 14088 (C:\manishshrma\moment-forever-gateway\target\classes started by rsshr in C:\manishshrma\moment-forever-gateway)
+2026-10-09 20:46:35.462 [main] [39mDEBUG[0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-10-09 20:46:35.465 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2026-10-09 20:46:47.637 [main] [34mINFO [0;39m [36mo.s.cloud.context.scope.GenericScope[0;39m - BeanFactory id=271ce793-fd9a-3242-b60d-e21ea8bc6c69
+2026-10-09 20:46:48.106 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 20:46:48.113 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 20:46:48.119 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 20:46:59.627 [main] [34mINFO [0;39m [36mo.s.b.a.e.web.EndpointLinksResolver[0;39m - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-10-09 20:47:00.945 [main] [31mWARN [0;39m [36mo.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger[0;39m - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-09 20:47:01.757 [main] [34mINFO [0;39m [36mo.s.b.w.e.netty.NettyWebServer[0;39m - Netty started on port 8086
+2026-10-09 20:47:01.784 [main] [34mINFO [0;39m [36mo.s.c.c.s.ConsulServiceRegistry[0;39m - Registering service with consul: NewService{id='api-gateway-d6b3278751f800fb3c04b82fae72de40', name='api-gateway', tags=[], address='192.168.1.101', meta={secure=false}, port=8086, enableTagOverride=null, check=Check{script='null', dockerContainerID='null', shell='null', interval='10s', ttl='null', http='http://192.168.1.101:8086/actuator/health', method='null', header={}, tcp='null', timeout='null', deregisterCriticalServiceAfter='null', tlsSkipVerify=null, status='null', grpc='null', grpcUseTLS=null}, checks=null}
+2026-10-09 20:47:04.247 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Started MomentForeverApiGatewayApplication in 34.552 seconds (process running for 46.852)
+2026-10-09 21:05:53.926 [main] [34mINFO [0;39m [36mo.s.t.c.s.AnnotationConfigContextLoaderUtils[0;39m - Could not detect default configuration classes for test class [com.forvmom.MomentForeverAPIGateway.MomentForeverApiGatewayApplicationTests]: MomentForeverApiGatewayApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-09 21:05:54.159 [main] [34mINFO [0;39m [36mo.s.b.t.c.SpringBootTestContextBootstrapper[0;39m - Found @SpringBootConfiguration com.forvmom.MomentForeverAPIGateway.MomentForeverApiGatewayApplication for test class com.forvmom.MomentForeverAPIGateway.MomentForeverApiGatewayApplicationTests
+2026-10-09 21:05:55.633 [background-preinit] [34mINFO [0;39m [36mo.h.validator.internal.util.Version[0;39m - HV000001: Hibernate Validator 8.0.1.Final
+2026-10-09 21:05:55.709 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplicationTests[0;39m - Starting MomentForeverApiGatewayApplicationTests using Java 17.0.12 with PID 14232 (started by rsshr in C:\manishshrma\moment-forever-gateway)
+2026-10-09 21:05:55.711 [main] [39mDEBUG[0;39m [36mc.f.M.MomentForeverApiGatewayApplicationTests[0;39m - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-10-09 21:05:55.713 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplicationTests[0;39m - No active profile set, falling back to 1 default profile: "default"
+2026-10-09 21:06:00.121 [main] [34mINFO [0;39m [36mo.s.cloud.context.scope.GenericScope[0;39m - BeanFactory id=ff14640e-ba82-3bbb-88ca-d6723e556266
+2026-10-09 21:06:00.448 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:06:00.452 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:06:00.456 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:06:07.779 [main] [34mINFO [0;39m [36mo.s.b.a.e.web.EndpointLinksResolver[0;39m - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-10-09 21:06:09.237 [main] [31mWARN [0;39m [36mo.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger[0;39m - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-09 21:06:09.719 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplicationTests[0;39m - Started MomentForeverApiGatewayApplicationTests in 15.201 seconds (process running for 17.72)
+2026-10-09 21:08:37.051 [SpringApplicationShutdownHook] [34mINFO [0;39m [36mo.s.c.c.s.ConsulServiceRegistry[0;39m - Deregistering service with consul: api-gateway-d6b3278751f800fb3c04b82fae72de40
+2026-10-09 21:08:37.105 [catalogWatchTaskScheduler-1] [1;31mERROR[0;39m [36mo.s.c.c.discovery.ConsulCatalogWatch[0;39m - Error watching Consul CatalogServices
+org.springframework.beans.factory.BeanCreationNotAllowedException: Error creating bean with name 'cachedCompositeRouteLocator': Singleton bean creation not allowed while singletons of this factory are in destruction (Do not request a bean from a BeanFactory in a destroy method implementation!)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:220)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1417)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.getIfAvailable(DefaultListableBeanFactory.java:2056)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.ifAvailable(DefaultListableBeanFactory.java:2067)
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.onApplicationEvent(WeightCalculatorWebFilter.java:144)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:174)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:445)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73)
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.resetIfNeeded(RouteRefreshListener.java:68)
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:62)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:174)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:445)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+	at org.springframework.cloud.consul.discovery.ConsulCatalogWatch.catalogServicesWatch(ConsulCatalogWatch.java:139)
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:305)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2026-10-09 21:09:02.685 [background-preinit] [34mINFO [0;39m [36mo.h.validator.internal.util.Version[0;39m - HV000001: Hibernate Validator 8.0.1.Final
+2026-10-09 21:09:02.817 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Starting MomentForeverApiGatewayApplication using Java 17.0.12 with PID 10432 (C:\manishshrma\moment-forever-gateway\target\classes started by rsshr in C:\manishshrma\moment-forever-gateway)
+2026-10-09 21:09:02.819 [main] [39mDEBUG[0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-10-09 21:09:02.821 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - No active profile set, falling back to 1 default profile: "default"
+2026-10-09 21:09:07.864 [main] [34mINFO [0;39m [36mo.s.cloud.context.scope.GenericScope[0;39m - BeanFactory id=271ce793-fd9a-3242-b60d-e21ea8bc6c69
+2026-10-09 21:09:08.074 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:09:08.077 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:09:08.081 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:09:12.526 [main] [34mINFO [0;39m [36mo.s.b.a.e.web.EndpointLinksResolver[0;39m - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-10-09 21:09:13.332 [main] [31mWARN [0;39m [36mo.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger[0;39m - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-09 21:09:13.794 [main] [34mINFO [0;39m [36mo.s.b.w.e.netty.NettyWebServer[0;39m - Netty started on port 8086
+2026-10-09 21:09:13.801 [main] [34mINFO [0;39m [36mo.s.c.c.s.ConsulServiceRegistry[0;39m - Registering service with consul: NewService{id='api-gateway-82ca23e05d29fbaf98a6e5dc241269bd', name='api-gateway', tags=[], address='192.168.1.101', meta={secure=false}, port=8086, enableTagOverride=null, check=Check{script='null', dockerContainerID='null', shell='null', interval='10s', ttl='null', http='http://192.168.1.101:8086/actuator/health', method='null', header={}, tcp='null', timeout='null', deregisterCriticalServiceAfter='null', tlsSkipVerify=null, status='null', grpc='null', grpcUseTLS=null}, checks=null}
+2026-10-09 21:09:14.753 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplication[0;39m - Started MomentForeverApiGatewayApplication in 15.258 seconds (process running for 20.771)
+2026-10-09 21:10:43.339 [boundedElastic-5] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-BOOKING
+2026-10-09 21:11:17.489 [boundedElastic-5] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-BOOKING
+2026-10-09 21:11:54.586 [reactor-http-nio-8] [39mDEBUG[0;39m [36mc.f.M.util.JwtUtil[0;39m - Invalid token: JWT strings must contain exactly 2 period characters. Found: 0
+2026-10-09 21:12:36.997 [boundedElastic-6] [31mWARN [0;39m [36mo.s.c.l.core.RoundRobinLoadBalancer[0;39m - No servers available for service: MOMENT-FOREVER-BOOKING
+2026-10-09 21:23:23.015 [main] [34mINFO [0;39m [36mo.s.t.c.s.AnnotationConfigContextLoaderUtils[0;39m - Could not detect default configuration classes for test class [com.forvmom.MomentForeverAPIGateway.MomentForeverApiGatewayApplicationTests]: MomentForeverApiGatewayApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-09 21:23:23.212 [main] [34mINFO [0;39m [36mo.s.b.t.c.SpringBootTestContextBootstrapper[0;39m - Found @SpringBootConfiguration com.forvmom.MomentForeverAPIGateway.MomentForeverApiGatewayApplication for test class com.forvmom.MomentForeverAPIGateway.MomentForeverApiGatewayApplicationTests
+2026-10-09 21:23:23.771 [background-preinit] [34mINFO [0;39m [36mo.h.validator.internal.util.Version[0;39m - HV000001: Hibernate Validator 8.0.1.Final
+2026-10-09 21:23:23.832 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplicationTests[0;39m - Starting MomentForeverApiGatewayApplicationTests using Java 17.0.12 with PID 14360 (started by rsshr in C:\manishshrma\moment-forever-gateway)
+2026-10-09 21:23:23.834 [main] [39mDEBUG[0;39m [36mc.f.M.MomentForeverApiGatewayApplicationTests[0;39m - Running with Spring Boot v3.1.5, Spring v6.0.13
+2026-10-09 21:23:23.835 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplicationTests[0;39m - No active profile set, falling back to 1 default profile: "default"
+2026-10-09 21:23:26.433 [main] [34mINFO [0;39m [36mo.s.cloud.context.scope.GenericScope[0;39m - BeanFactory id=ff14640e-ba82-3bbb-88ca-d6723e556266
+2026-10-09 21:23:26.715 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:23:26.718 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig' of type [org.springframework.cloud.client.loadbalancer.reactive.LoadBalancerBeanPostProcessorAutoConfiguration$ReactorDeferringLoadBalancerFilterConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:23:26.721 [main] [34mINFO [0;39m [36mo.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker[0;39m - Bean 'reactorDeferringLoadBalancerExchangeFilterFunction' of type [org.springframework.cloud.client.loadbalancer.reactive.DeferringLoadBalancerExchangeFilterFunction] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2026-10-09 21:23:30.669 [main] [34mINFO [0;39m [36mo.s.b.a.e.web.EndpointLinksResolver[0;39m - Exposing 1 endpoint(s) beneath base path '/actuator'
+2026-10-09 21:23:31.326 [main] [31mWARN [0;39m [36mo.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger[0;39m - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-09 21:23:31.627 [main] [34mINFO [0;39m [36mc.f.M.MomentForeverApiGatewayApplicationTests[0;39m - Started MomentForeverApiGatewayApplicationTests in 8.264 seconds (process running for 9.454)

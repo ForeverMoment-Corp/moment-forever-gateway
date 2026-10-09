@@ -65,11 +65,13 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
 
         // 4. (Optional) Extract user info and forward to downstream services
 
-        // 4. Extract user info and forward to downstream services
+        // 4. Extract user info and forward to downstream services.
+        // Downstream GatewayHeaderAuthenticationFilter reads X-User-Id (numeric id),
+        // X-User-Roles, and optionally X-User-Name (falls back to userId when absent).
         String username = jwtUtil.extractUsername(token);
         Long userId = jwtUtil.extractUserId(token);
         exchange = exchange.mutate()
-                .request(r -> r.header("X-User-Id", username)
+                .request(r -> r.header("X-User-Name", username)
                         .header("X-User-Id", String.valueOf(userId))
                         .header("X-User-Roles", String.join(",", jwtUtil.extractRoles(token))))
                 .build();
