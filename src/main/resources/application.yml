@@ -156,6 +156,19 @@ spring:
           metadata:
             requires-auth: true
 
+        # Provider webhooks carry their own signature auth
+        # (Stripe-Signature / X-Razorpay-Signature verified in payment-service),
+        # so they must bypass JWT. Must stay BEFORE payment-service:
+        # /api/payment/** would otherwise match first.
+        - id: payment-webhooks
+          uri: lb://MOMENT-FOREVER-PAYMENT
+          predicates:
+            - Path=/api/payment/webhooks/**
+          filters:
+            - StripPrefix=1
+          metadata:
+            is-public: true
+
         - id: payment-service
           uri: lb://MOMENT-FOREVER-PAYMENT
           predicates:
