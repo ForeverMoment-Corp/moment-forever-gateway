@@ -69,10 +69,15 @@ public class JwtAuthenticationFilter implements GlobalFilter, Ordered {
         // Downstream GatewayHeaderAuthenticationFilter reads X-User-Id (numeric id),
         // X-User-Roles, and optionally X-User-Name (falls back to userId when absent).
         String username = jwtUtil.extractUsername(token);
-        Long userId = jwtUtil.extractUserId(token);
+        Long appUserId = jwtUtil.extractAppUserId(token);
+        Long authUserId = jwtUtil.extractAuthUserId(token);
         exchange = exchange.mutate()
                 .request(r -> r.header("X-User-Name", username)
-                        .header("X-User-Id", String.valueOf(userId))
+                        // Keep X-User-Id as app-domain id for backward compatibility with
+                        // downstream controllers expecting this header.
+                        .header("X-User-Id", String.valueOf(appUserId))
+                        .header("X-App-User-Id", String.valueOf(appUserId))
+                        .header("X-Auth-User-Id", String.valueOf(authUserId))
                         .header("X-User-Roles", String.join(",", jwtUtil.extractRoles(token))))
                 .build();
 

@@ -31,6 +31,23 @@ public class JwtUtil {
         return extractClaim(token, claims -> claims.get("userId", Long.class));
     }
 
+    /**
+     * Auth domain identifier from token; falls back to userId for legacy tokens.
+     */
+    public Long extractAuthUserId(String token) {
+        Long authUserId = extractClaim(token, claims -> claims.get("authUserId", Long.class));
+        return authUserId != null ? authUserId : extractUserId(token);
+    }
+
+    /**
+     * Application-user identifier for business-domain operations; falls back to
+     * userId for compatibility.
+     */
+    public Long extractAppUserId(String token) {
+        Long appUserId = extractClaim(token, claims -> claims.get("appUserId", Long.class));
+        return appUserId != null ? appUserId : extractUserId(token);
+    }
+
     public String extractRoles(String token) {
         return extractClaim(token, claims -> claims.get("roles", String.class));
     }
